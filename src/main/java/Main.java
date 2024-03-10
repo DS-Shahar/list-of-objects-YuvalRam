@@ -6,8 +6,7 @@ public class testQ_node {
 		Task[] a = {new Task("a1", 2, 100),new Task("a2", 2, 100),new Task("a3", 2, 100),new Task("a4", 4, 100),new Task("a5", 4, 100)};
 		Node<Task> L = q1_buildList(a);
 		System.out.println(L);
-		insert(L,new Task("b1", 3, 100));
-		System.out.println(L);
+		System.out.println(insert(L,new Task("b1", 1, 100)));
 
 	}
 	
@@ -23,7 +22,7 @@ public class testQ_node {
 		return p1;
 	}
 	
-	public static void insert(Node<Task> L, Task t) {
+	public static Node<Task> insert(Node<Task> L, Task t) {
 		Node<Task> p = L;
 		Node<Task> task = new Node<Task>(t);
 		boolean x = false;
@@ -41,9 +40,9 @@ public class testQ_node {
 			else
 				p = p.getNext();
 		}
-		if(x==false) {
+		if(x==false) 
 			p.setNext(task);
-		}
+		return L;
 	}
 	
 	public static void update(Node<Task> L, boolean b, int c) {
