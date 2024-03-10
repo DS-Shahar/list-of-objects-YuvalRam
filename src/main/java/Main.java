@@ -62,4 +62,69 @@ public class testQ_node {
 		return L;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	package yuval;
+
+public class main {
+
+	public static void main(String[] args) {
+		int[] a = {2,3,4,8,15,16,26,27,28,29,30};
+		Node<Integer> L = q1_buildList(a);
+		System.out.println(range(L));
+
+	}
+	
+	public static Node<Integer> q1_buildList(int[] arr) {
+		Node<Integer> p1 = new Node<Integer>(arr[0]);
+		Node<Integer> p2 = new Node<Integer>(arr[1]);
+		p1.setNext(p2);
+		for (int i = 2; i < arr.length; i++) {
+			Node<Integer> p = new Node<Integer>(arr[i]);
+			p2.setNext(p);
+			p2 = p;
+		}
+		return p1;
+	}
+	
+	public static Node<RangeNode> range(Node<Integer> L){
+		Node<Integer> p = L;
+		Node<RangeNode> f = new Node<RangeNode>(new RangeNode(0,0));
+		Node<RangeNode> n = f;
+		int from = p.getValue();
+		p = p.getNext();
+		while(p.getNext()!=null) {
+			if(from==(p.getValue()+1)) {
+				int to = p.getValue();
+				p = p.getNext();
+				while(p.getValue()==(p.getNext().getValue()+1)&&p.getNext()!=null) {
+					to = p.getValue();
+					p = p.getNext();
+				}
+				n.setNext(new Node<RangeNode>(new RangeNode(from,to)));
+			}
+			else {
+				n.setNext(new Node<RangeNode>(new RangeNode(from,from)));
+				p = p.getNext();
+			}
+			n = n.getNext();
+			from = p.getValue();
+		}
+		return f;
+	}
+
+}
+
+
 }
