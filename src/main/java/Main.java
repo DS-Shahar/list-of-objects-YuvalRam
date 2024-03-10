@@ -7,6 +7,7 @@ public class testQ_node {
 		Node<Task> L = q1_buildList(a);
 		System.out.println(L);
 		System.out.println(insert(L,new Task("b1", 1, 100)));
+		System.out.println(update(L,false,30));
 
 	}
 	
@@ -45,7 +46,7 @@ public class testQ_node {
 		return L;
 	}
 	
-	public static void update(Node<Task> L, boolean b, int c) {
+	public static Node<Task> update(Node<Task> L, boolean b, int c) {
 		if(b==true)
 			L = L.getNext();
 		else {
@@ -56,8 +57,9 @@ public class testQ_node {
 				t.addCredit(100);
 				t.decPriority();
 			}
-			insert(L,t);
+			L = insert(L,t);
 		}
+		return L;
 	}
 
 }
