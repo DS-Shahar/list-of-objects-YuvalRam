@@ -45,5 +45,20 @@ public class testQ_node {
 			p.setNext(task);
 		}
 	}
+	
+	public static void update(Node<Task> L, boolean b, int c) {
+		if(b==true)
+			L = L.getNext();
+		else {
+			Task t = L.getValue();
+			L = L.getNext();
+			t.subCredit(c);
+			if(t.getCredit()<10) {
+				t.addCredit(100);
+				t.decPriority();
+			}
+			insert(L,t);
+		}
+	}
 
 }
